@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_variant_variant_properties",
+  "info": {
+    "displayName": "VariantProperties",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

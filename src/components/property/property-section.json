@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_property_property_sections",
+  "info": {
+    "displayName": "PropertySection",
+    "icon": "arrowRight"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "display": {
+      "type": "string",
+      "required": true
+    },
+    "properties": {
+      "type": "component",
+      "component": "property.property-item",
+      "repeatable": true,
+      "required": true
+    }
+  },
+  "config": {}
+}

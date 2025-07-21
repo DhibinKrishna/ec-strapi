@@ -1,0 +1,99 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "products"
+    },
+    "privateIdentifier": {
+      "type": "string",
+      "private": true
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "properties": {
+      "type": "component",
+      "component": "property.property-section",
+      "repeatable": true
+    },
+    "variantParentOptions": {
+      "type": "component",
+      "component": "variant.variant-options",
+      "repeatable": true
+    },
+    "variantChildAttributes": {
+      "type": "component",
+      "component": "variant.variant-properties",
+      "repeatable": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "variants"
+    },
+    "variants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "parent"
+    },
+    "isAvailable": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "details": {
+      "type": "text"
+    },
+    "pricing": {
+      "type": "component",
+      "component": "pricing.price",
+      "repeatable": false,
+      "required": true
+    },
+    "pricingHistory": {
+      "type": "component",
+      "component": "pricing.price-history",
+      "repeatable": true
+    }
+  }
+}

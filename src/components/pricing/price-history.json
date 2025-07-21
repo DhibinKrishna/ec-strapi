@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_pricing_price_histories",
+  "info": {
+    "displayName": "PriceHistory",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "basePrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "salePrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "discountPercentage": {
+      "type": "integer",
+      "required": true
+    },
+    "priceStartDate": {
+      "type": "date",
+      "required": true
+    },
+    "priceEndDate": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "config": {}
+}
