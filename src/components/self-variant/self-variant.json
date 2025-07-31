@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_self_variant_self_variants",
+  "info": {
+    "displayName": "SelfVariant",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "display": {
+      "type": "string",
+      "required": true
+    },
+    "unit": {
+      "type": "component",
+      "component": "self-variant.unit",
+      "repeatable": false,
+      "required": false
+    },
+    "options": {
+      "type": "component",
+      "component": "self-variant.option",
+      "repeatable": true,
+      "required": true
+    },
+    "defaultOption": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Required",
+        "Optional"
+      ]
+    }
+  },
+  "config": {}
+}

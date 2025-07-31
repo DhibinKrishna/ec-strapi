@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "self_variant_pricings",
+  "info": {
+    "singularName": "self-variant-pricing",
+    "pluralName": "self-variant-pricings",
+    "displayName": "SelfVariantPricing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "privateIdentifier": {
+      "type": "string",
+      "private": true
+    },
+    "priceEngine": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::price-engine.price-engine",
+      "inversedBy": "selfVariantPricings"
+    },
+    "pricing": {
+      "type": "component",
+      "component": "self-variant.self-variant-pricing",
+      "repeatable": true,
+      "required": true
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "selfVariantPricing"
+    }
+  }
+}

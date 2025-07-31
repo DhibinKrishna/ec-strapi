@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_self_variant_self_variant_pricings",
+  "info": {
+    "displayName": "SelfVariantPricing",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

@@ -475,6 +475,40 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPriceEnginePriceEngine extends Struct.CollectionTypeSchema {
+  collectionName: 'price_engines';
+  info: {
+    displayName: 'PriceEngine';
+    pluralName: 'price-engines';
+    singularName: 'price-engine';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    details: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::price-engine.price-engine'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    privateIdentifier: Schema.Attribute.String & Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    selfVariantPricings: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::self-variant-pricing.self-variant-pricing'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -511,6 +545,14 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     privateIdentifier: Schema.Attribute.String & Schema.Attribute.Private;
     properties: Schema.Attribute.Component<'property.property-section', true>;
     publishedAt: Schema.Attribute.DateTime;
+    selfVariantOptions: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::self-variant-option.self-variant-option'
+    >;
+    selfVariantPricing: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::self-variant-pricing.self-variant-pricing'
+    >;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     sort: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
@@ -525,6 +567,84 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       true
     >;
     variants: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+  };
+}
+
+export interface ApiSelfVariantOptionSelfVariantOption
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'self_variant_options';
+  info: {
+    displayName: 'SelfVariantOption';
+    pluralName: 'self-variant-options';
+    singularName: 'self-variant-option';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::self-variant-option.self-variant-option'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    privateIdentifier: Schema.Attribute.String & Schema.Attribute.Private;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    selfVariantOptions: Schema.Attribute.Component<
+      'self-variant.self-variant',
+      true
+    > &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSelfVariantPricingSelfVariantPricing
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'self_variant_pricings';
+  info: {
+    displayName: 'SelfVariantPricing';
+    pluralName: 'self-variant-pricings';
+    singularName: 'self-variant-pricing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::self-variant-pricing.self-variant-pricing'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    priceEngine: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::price-engine.price-engine'
+    >;
+    pricing: Schema.Attribute.Component<
+      'self-variant.self-variant-pricing',
+      true
+    > &
+      Schema.Attribute.Required;
+    privateIdentifier: Schema.Attribute.String & Schema.Attribute.Private;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1040,7 +1160,10 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
+      'api::price-engine.price-engine': ApiPriceEnginePriceEngine;
       'api::product.product': ApiProductProduct;
+      'api::self-variant-option.self-variant-option': ApiSelfVariantOptionSelfVariantOption;
+      'api::self-variant-pricing.self-variant-pricing': ApiSelfVariantPricingSelfVariantPricing;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

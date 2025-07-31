@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_self_variant_units",
+  "info": {
+    "displayName": "Unit",
+    "icon": "arrowDown"
+  },
+  "options": {},
+  "attributes": {
+    "key": {
+      "type": "string",
+      "required": true
+    },
+    "display": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

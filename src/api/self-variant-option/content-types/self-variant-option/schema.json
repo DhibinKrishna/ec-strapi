@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "self_variant_options",
+  "info": {
+    "singularName": "self-variant-option",
+    "pluralName": "self-variant-options",
+    "displayName": "SelfVariantOption"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "privateIdentifier": {
+      "type": "string",
+      "private": true
+    },
+    "selfVariantOptions": {
+      "type": "component",
+      "component": "self-variant.self-variant",
+      "repeatable": true,
+      "required": true
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product",
+      "mappedBy": "selfVariantOptions"
+    }
+  }
+}

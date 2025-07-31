@@ -94,6 +94,18 @@
       "type": "component",
       "component": "pricing.price-history",
       "repeatable": true
+    },
+    "selfVariantOptions": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::self-variant-option.self-variant-option",
+      "inversedBy": "products"
+    },
+    "selfVariantPricing": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::self-variant-pricing.self-variant-pricing",
+      "inversedBy": "products"
     }
   }
 }

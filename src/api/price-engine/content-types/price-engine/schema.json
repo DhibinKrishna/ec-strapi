@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "price_engines",
+  "info": {
+    "singularName": "price-engine",
+    "pluralName": "price-engines",
+    "displayName": "PriceEngine"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "privateIdentifier": {
+      "type": "string",
+      "private": true
+    },
+    "details": {
+      "type": "text"
+    },
+    "selfVariantPricings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::self-variant-pricing.self-variant-pricing",
+      "mappedBy": "priceEngine"
+    }
+  }
+}
