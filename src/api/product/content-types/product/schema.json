@@ -76,11 +76,6 @@
       "target": "api::product.product",
       "mappedBy": "parent"
     },
-    "isAvailable": {
-      "type": "boolean",
-      "required": true,
-      "default": true
-    },
     "details": {
       "type": "text"
     },
@@ -88,7 +83,7 @@
       "type": "component",
       "component": "pricing.price",
       "repeatable": false,
-      "required": true
+      "required": false
     },
     "pricingHistory": {
       "type": "component",
@@ -106,6 +101,26 @@
       "relation": "manyToOne",
       "target": "api::self-variant-pricing.self-variant-pricing",
       "inversedBy": "products"
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "isOnSale": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "minQuantity": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "maxQuantity": {
+      "type": "integer",
+      "required": true,
+      "default": 30
     }
   }
 }

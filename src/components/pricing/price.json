@@ -6,29 +6,15 @@
   },
   "options": {},
   "attributes": {
-    "isOnSale": {
-      "type": "boolean",
-      "required": true,
-      "default": true
-    },
     "basePrice": {
       "type": "decimal",
       "required": true
     },
-    "salePrice": {
+    "discountedPrice": {
       "type": "decimal",
       "required": true
     },
     "discountPercentage": {
-      "type": "integer",
-      "required": true
-    },
-    "minQuantity": {
-      "type": "integer",
-      "required": true,
-      "default": 1
-    },
-    "maxQuantity": {
       "type": "integer",
       "required": true
     },

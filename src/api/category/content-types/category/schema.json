@@ -45,6 +45,11 @@
     "privateIdentifier": {
       "type": "string",
       "private": true
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
     }
   }
 }

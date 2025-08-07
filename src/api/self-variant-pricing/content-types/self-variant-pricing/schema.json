@@ -25,17 +25,22 @@
       "target": "api::price-engine.price-engine",
       "inversedBy": "selfVariantPricings"
     },
-    "pricing": {
-      "type": "component",
-      "component": "self-variant.self-variant-pricing",
-      "repeatable": true,
-      "required": true
-    },
     "products": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "selfVariantPricing"
+    },
+    "pricingParameters": {
+      "type": "component",
+      "component": "self-variant.self-variant-pricing",
+      "repeatable": true,
+      "required": true
+    },
+    "discountPercentage": {
+      "type": "integer",
+      "required": true,
+      "default": 0
     }
   }
 }

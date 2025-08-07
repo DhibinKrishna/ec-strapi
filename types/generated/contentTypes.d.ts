@@ -452,6 +452,9 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    isActive: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
     isAvailable: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
@@ -528,7 +531,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     description: Schema.Attribute.Text;
     details: Schema.Attribute.Text;
     images: Schema.Attribute.Media<'images', true>;
-    isAvailable: Schema.Attribute.Boolean &
+    isActive: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    isOnSale: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -537,10 +543,15 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'api::product.product'
     > &
       Schema.Attribute.Private;
+    maxQuantity: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<30>;
+    minQuantity: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<1>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     parent: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
-    pricing: Schema.Attribute.Component<'pricing.price', false> &
-      Schema.Attribute.Required;
+    pricing: Schema.Attribute.Component<'pricing.price', false>;
     pricingHistory: Schema.Attribute.Component<'pricing.price-history', true>;
     privateIdentifier: Schema.Attribute.String & Schema.Attribute.Private;
     properties: Schema.Attribute.Component<'property.property-section', true>;
@@ -623,6 +634,9 @@ export interface ApiSelfVariantPricingSelfVariantPricing
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    discountPercentage: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -634,7 +648,7 @@ export interface ApiSelfVariantPricingSelfVariantPricing
       'manyToOne',
       'api::price-engine.price-engine'
     >;
-    pricing: Schema.Attribute.Component<
+    pricingParameters: Schema.Attribute.Component<
       'self-variant.self-variant-pricing',
       true
     > &

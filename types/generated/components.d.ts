@@ -8,17 +8,10 @@ export interface PricingPrice extends Struct.ComponentSchema {
   };
   attributes: {
     basePrice: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    discountedPrice: Schema.Attribute.Decimal & Schema.Attribute.Required;
     discountPercentage: Schema.Attribute.Integer & Schema.Attribute.Required;
-    isOnSale: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    maxQuantity: Schema.Attribute.Integer & Schema.Attribute.Required;
-    minQuantity: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<1>;
     priceEndDate: Schema.Attribute.Date & Schema.Attribute.Required;
     priceStartDate: Schema.Attribute.Date & Schema.Attribute.Required;
-    salePrice: Schema.Attribute.Decimal & Schema.Attribute.Required;
   };
 }
 
@@ -70,6 +63,9 @@ export interface SelfVariantOption extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
+    isActive: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
     value: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
