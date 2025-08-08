@@ -31,11 +31,6 @@
     "sort": {
       "type": "integer"
     },
-    "isAvailable": {
-      "type": "boolean",
-      "required": true,
-      "default": true
-    },
     "products": {
       "type": "relation",
       "relation": "oneToMany",

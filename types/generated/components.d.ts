@@ -63,9 +63,14 @@ export interface SelfVariantOption extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     isActive: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
+    properties: Schema.Attribute.Component<'property.property-section', true>;
     value: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
