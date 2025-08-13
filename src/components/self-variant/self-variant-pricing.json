@@ -1,7 +1,7 @@
 {
   "collectionName": "components_self_variant_self_variant_pricings",
   "info": {
-    "displayName": "SelfVariantPricing",
+    "displayName": "VariantPricing",
     "icon": "check"
   },
   "options": {},

@@ -49,32 +49,10 @@
       "component": "property.property-section",
       "repeatable": true
     },
-    "variantParentOptions": {
-      "type": "component",
-      "component": "variant.variant-options",
-      "repeatable": true
-    },
-    "variantChildAttributes": {
-      "type": "component",
-      "component": "variant.variant-properties",
-      "repeatable": true
-    },
     "slug": {
       "type": "uid",
       "targetField": "name",
       "required": true
-    },
-    "parent": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "variants"
-    },
-    "variants": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "parent"
     },
     "details": {
       "type": "text"
@@ -90,13 +68,13 @@
       "component": "pricing.price-history",
       "repeatable": true
     },
-    "selfVariantOptions": {
+    "variantOptions": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::self-variant-option.self-variant-option",
       "inversedBy": "products"
     },
-    "selfVariantPricing": {
+    "variantPricing": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::self-variant-pricing.self-variant-pricing",

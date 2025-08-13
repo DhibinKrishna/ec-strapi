@@ -4,7 +4,7 @@
   "info": {
     "singularName": "self-variant-pricing",
     "pluralName": "self-variant-pricings",
-    "displayName": "SelfVariantPricing"
+    "displayName": "VariantPricing"
   },
   "options": {
     "draftAndPublish": true
@@ -29,7 +29,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product.product",
-      "mappedBy": "selfVariantPricing"
+      "mappedBy": "variantPricing"
     },
     "pricingParameters": {
       "type": "component",

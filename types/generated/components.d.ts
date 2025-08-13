@@ -78,7 +78,7 @@ export interface SelfVariantOption extends Struct.ComponentSchema {
 export interface SelfVariantSelfVariant extends Struct.ComponentSchema {
   collectionName: 'components_self_variant_self_variants';
   info: {
-    displayName: 'SelfVariant';
+    displayName: 'Variant';
     icon: 'apps';
   };
   attributes: {
@@ -97,7 +97,7 @@ export interface SelfVariantSelfVariant extends Struct.ComponentSchema {
 export interface SelfVariantSelfVariantPricing extends Struct.ComponentSchema {
   collectionName: 'components_self_variant_self_variant_pricings';
   info: {
-    displayName: 'SelfVariantPricing';
+    displayName: 'VariantPricing';
     icon: 'check';
   };
   attributes: {
@@ -118,44 +118,6 @@ export interface SelfVariantUnit extends Struct.ComponentSchema {
   };
 }
 
-export interface VariantVariantAttributes extends Struct.ComponentSchema {
-  collectionName: 'components_variant_variant_attributes';
-  info: {
-    displayName: 'VariantAttributes';
-    icon: 'stack';
-  };
-  attributes: {
-    display: Schema.Attribute.String & Schema.Attribute.Required;
-    key: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
-export interface VariantVariantOptions extends Struct.ComponentSchema {
-  collectionName: 'components_variant_variant_options';
-  info: {
-    displayName: 'VariantOptions';
-    icon: 'dashboard';
-  };
-  attributes: {
-    display: Schema.Attribute.String & Schema.Attribute.Required;
-    key: Schema.Attribute.String & Schema.Attribute.Required;
-    options: Schema.Attribute.Component<'variant.variant-attributes', true> &
-      Schema.Attribute.Required;
-  };
-}
-
-export interface VariantVariantProperties extends Struct.ComponentSchema {
-  collectionName: 'components_variant_variant_properties';
-  info: {
-    displayName: 'VariantProperties';
-    icon: 'check';
-  };
-  attributes: {
-    key: Schema.Attribute.String & Schema.Attribute.Required;
-    value: Schema.Attribute.String & Schema.Attribute.Required;
-  };
-}
-
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -167,9 +129,6 @@ declare module '@strapi/strapi' {
       'self-variant.self-variant': SelfVariantSelfVariant;
       'self-variant.self-variant-pricing': SelfVariantSelfVariantPricing;
       'self-variant.unit': SelfVariantUnit;
-      'variant.variant-attributes': VariantVariantAttributes;
-      'variant.variant-options': VariantVariantOptions;
-      'variant.variant-properties': VariantVariantProperties;
     }
   }
 }

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "self-variant-option",
     "pluralName": "self-variant-options",
-    "displayName": "SelfVariantOption"
+    "displayName": "VariantOption"
   },
   "options": {
     "draftAndPublish": true
@@ -20,7 +20,7 @@
       "type": "string",
       "private": true
     },
-    "selfVariantOptions": {
+    "variantOptions": {
       "type": "component",
       "component": "self-variant.self-variant",
       "repeatable": true,
@@ -30,7 +30,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product.product",
-      "mappedBy": "selfVariantOptions"
+      "mappedBy": "variantOptions"
     }
   }
 }

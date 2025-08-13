@@ -547,34 +547,24 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<1>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    parent: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     pricing: Schema.Attribute.Component<'pricing.price', false>;
     pricingHistory: Schema.Attribute.Component<'pricing.price-history', true>;
     privateIdentifier: Schema.Attribute.String & Schema.Attribute.Private;
     properties: Schema.Attribute.Component<'property.property-section', true>;
     publishedAt: Schema.Attribute.DateTime;
-    selfVariantOptions: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::self-variant-option.self-variant-option'
-    >;
-    selfVariantPricing: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::self-variant-pricing.self-variant-pricing'
-    >;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     sort: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    variantChildAttributes: Schema.Attribute.Component<
-      'variant.variant-properties',
-      true
+    variantOptions: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::self-variant-option.self-variant-option'
     >;
-    variantParentOptions: Schema.Attribute.Component<
-      'variant.variant-options',
-      true
+    variantPricing: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::self-variant-pricing.self-variant-pricing'
     >;
-    variants: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
   };
 }
 
@@ -582,7 +572,7 @@ export interface ApiSelfVariantOptionSelfVariantOption
   extends Struct.CollectionTypeSchema {
   collectionName: 'self_variant_options';
   info: {
-    displayName: 'SelfVariantOption';
+    displayName: 'VariantOption';
     pluralName: 'self-variant-options';
     singularName: 'self-variant-option';
   };
@@ -605,14 +595,14 @@ export interface ApiSelfVariantOptionSelfVariantOption
     privateIdentifier: Schema.Attribute.String & Schema.Attribute.Private;
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
-    selfVariantOptions: Schema.Attribute.Component<
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    variantOptions: Schema.Attribute.Component<
       'self-variant.self-variant',
       true
     > &
       Schema.Attribute.Required;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
   };
 }
 
@@ -620,7 +610,7 @@ export interface ApiSelfVariantPricingSelfVariantPricing
   extends Struct.CollectionTypeSchema {
   collectionName: 'self_variant_pricings';
   info: {
-    displayName: 'SelfVariantPricing';
+    displayName: 'VariantPricing';
     pluralName: 'self-variant-pricings';
     singularName: 'self-variant-pricing';
   };
